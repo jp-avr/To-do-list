@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
+//COMPONENTE RESPONSÁVEL PELO RETANGULO DE TAREFAS
+
 interface TodoProps {
     tarefa: {
         id: string;
