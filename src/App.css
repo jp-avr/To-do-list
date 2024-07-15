@@ -15,6 +15,7 @@
   box-sizing: border-box;
 }
 
+/*olha isso*/
 body {
   background: var(--cor-de-fundo);
   display: flex;
@@ -96,4 +97,3 @@ h1 {
 .delete-icon {
   cursor: pointer;
 }
- 
