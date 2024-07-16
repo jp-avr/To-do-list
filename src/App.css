@@ -15,12 +15,17 @@
   box-sizing: border-box;
 }
 
-/*olha isso*/
 body {
   background: var(--cor-de-fundo);
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 12%;
+}
+
+.imagem_note {
+  padding-top: 5%;
+  width: 30%;
+  height: 30%;
 }
 
 .App {
@@ -31,6 +36,10 @@ h1 {
   color: var(--cor-de-texto);
   margin-bottom: 0.5rem;
   font-size: 1.75rem;
+}
+
+p {
+  font-size: 0.9rem;
 }
 
 .TodoWrapper {
@@ -64,7 +73,7 @@ h1 {
   background: #8758ff;
   color: #fff;
   border: none;
-  padding: 0.55rem;
+  padding: 0.60rem;
   cursor: pointer;
 }
 
@@ -96,4 +105,59 @@ h1 {
 .edit-icon,
 .delete-icon {
   cursor: pointer;
+}
+
+/* RESPONSIVIDADE CELULAR */
+@media (max-width: 480px) {
+
+  body {
+    flex-direction: column;
+    padding: 2%;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 1.40rem;
+  }
+
+  p {
+    font-size: 0.70rem;
+  }
+
+  .TodoWrapper {
+    margin-top: 2rem;
+  }
+
+  .todo-input {
+    width: 200px;
+  }
+}
+
+/* RESPONSIVIDADE TABLET */
+
+@media (min-width: 768px) and (max-width:820px) {
+
+  body {
+    flex-direction: row;
+    padding: 2%;
+    align-items: center;
+    gap: 5%;
+  }
+
+  h1 {
+    font-size: 1.60rem;
+  }
+
+  .TodoWrapper {
+    padding: 5rem;
+  }
+
+  .todo-input {
+    width: 250px;
+  }
+
+  .todo-btn {
+    padding: 0.60rem;
+    cursor: pointer;
+  }
 }

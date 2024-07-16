@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 
 //COMPONENTE RESPONSÁVEL PELO RETANGULO DE TAREFAS
 
@@ -31,6 +32,7 @@ export const Todo: React.FC<TodoProps> = ({ tarefa, tarefaCompleta, deletarTaref
 
     return (
         <div className={`Todo ${tarefa.completed ? 'completed' : ''}`}>
+            <FontAwesomeIcon icon={faCircleCheck} onClick={handleCompleteClick} />
             <p onClick={handleCompleteClick}>{tarefa.tarefa}</p>
             <div>
                 <FontAwesomeIcon icon={faPenToSquare} onClick={handleEditClick} />
