@@ -57,7 +57,7 @@ p {
 .todo-input {
   outline: none;
   background: none;
-  border: 1px solid #8758ff;
+  border: 1px solid #5B9A8B;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -70,10 +70,10 @@ p {
 }
 
 .todo-btn {
-  background: #8758ff;
+  background: #5B9A8B;
   color: #fff;
   border: none;
-  padding: 0.60rem;
+  padding: 0.55rem;
   cursor: pointer;
 }
 
@@ -131,6 +131,10 @@ p {
   .todo-input {
     width: 200px;
   }
+
+  .todo-btn {
+    padding: 0.56rem;
+  }
 }
 
 /* RESPONSIVIDADE TABLET */
@@ -158,6 +162,5 @@ p {
 
   .todo-btn {
     padding: 0.60rem;
-    cursor: pointer;
   }
 }
