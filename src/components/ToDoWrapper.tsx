@@ -7,32 +7,32 @@ import { EditTodoForm } from './TodoEditForm';
 interface Todo {
     id: string;
     tarefa: string;
+    description: string;
     completed: boolean;
+    completedAt?: Date | null;
     isEditing: boolean;
 }
 
-export default function TodoWrapper(){
+export default function TodoWrapper() {
     const localStorageKey = 'todos';
     const [todos, setTodos] = useState<Todo[]>([]);
 
-    //FUNÇÃO PARA TRAZER OS VALORES DO LOCAL STORAGE DE VOLTA
     useEffect(() => {
         const storedTodos = JSON.parse(localStorage.getItem(localStorageKey) || '[]') as Todo[];
         if (storedTodos) {
             setTodos(storedTodos);
         }
-    }, []); 
+    }, []);
 
-    // Função para salvar no localStorage
     const salvar = (updatedTodos: Todo[]) => {
         localStorage.setItem(localStorageKey, JSON.stringify(updatedTodos));
     };
 
-    const addTodo = (todo: string) => {
-        const newTodo: Todo = { id: uuidv4(), tarefa: todo, completed: false, isEditing: false };
+    const addTodo = (tarefa: string, description: string) => {
+        const newTodo: Todo = { id: uuidv4(), tarefa, description, completed: false, completedAt: null, isEditing: false };
         setTodos(prevTodos => {
             const updatedTodos = [...prevTodos, newTodo];
-            salvar(updatedTodos); // Salva com os todos atualizados
+            salvar(updatedTodos);
             return updatedTodos;
         });
     };
@@ -40,9 +40,9 @@ export default function TodoWrapper(){
     const tarefaCompleta = (id: string) => {
         setTodos(prevTodos => {
             const updatedTodos = prevTodos.map(todo =>
-                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+                todo.id === id ? { ...todo, completed: !todo.completed, completedAt: !todo.completed ? new Date() : null } : todo
             );
-            salvar(updatedTodos); // Salva com os todos atualizados
+            salvar(updatedTodos);
             return updatedTodos;
         });
     };
@@ -52,7 +52,7 @@ export default function TodoWrapper(){
             const updatedTodos = prevTodos.filter(todo =>
                 todo.id !== id
             );
-            salvar(updatedTodos); // Salva com os todos atualizados
+            salvar(updatedTodos);
             return updatedTodos;
         });
     };
@@ -62,28 +62,25 @@ export default function TodoWrapper(){
             const updatedTodos = prevTodos.map(todo =>
                 todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
             );
-            salvar(updatedTodos); // Salva com os todos atualizados
+            salvar(updatedTodos);
             return updatedTodos;
         });
     };
 
-    const editTarefa = (tarefa: string, id: string) => {
+    const editTarefa = (tarefa: string, description: string, id: string) => {
         setTodos(prevTodos => {
             const updatedTodos = prevTodos.map(todo =>
-                todo.id === id ? { ...todo, tarefa, isEditing: !todo.isEditing } : todo
+                todo.id === id ? { ...todo, tarefa, description, isEditing: !todo.isEditing } : todo
             );
-            salvar(updatedTodos); // Salva com os todos atualizados
+            salvar(updatedTodos);
             return updatedTodos;
         });
     };
-
 
     return (
         <div className='TodoWrapper'>
             <h1>Minhas tarefas</h1>
             <TodoForm addTodo={addTodo}></TodoForm>
-
-            {/* Esse trecho de código serve para mapear o que foi enviado na nossa task para adicionar o card */}
             {todos.map((todo) => (
                 todo.isEditing ? (
                     <EditTodoForm editarTarefa={editTarefa} tarefa={todo} key={todo.id}></EditTodoForm>
@@ -98,5 +95,5 @@ export default function TodoWrapper(){
                 )
             ))}
         </div>
-    )
-};
+    );
+}

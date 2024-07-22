@@ -86,6 +86,11 @@ p {
   padding: 0.75rem 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.Todo:hover{
+  background-color: #f0c474;
 }
 
 .fa-trash {
@@ -100,6 +105,10 @@ p {
 .Todo.completed {
   background-color: var(--tarefa-completa);
   cursor: pointer;
+}
+
+.Todo.completed:hover {
+  background-color: #5B9A8B;
 }
 
 .edit-icon,

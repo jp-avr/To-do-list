@@ -3,13 +3,13 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 
-//COMPONENTE RESPONSÁVEL PELO RETANGULO DE TAREFAS
-
 interface TodoProps {
     tarefa: {
         id: string;
         tarefa: string;
+        description: string;
         completed: boolean;
+        completedAt?: Date | null;
     };
     tarefaCompleta: (id: string) => void;
     deletarTarefa: (id: string) => void;
@@ -32,8 +32,17 @@ export const Todo: React.FC<TodoProps> = ({ tarefa, tarefaCompleta, deletarTaref
 
     return (
         <div className={`Todo ${tarefa.completed ? 'completed' : ''}`}>
-            <FontAwesomeIcon icon={faCircleCheck} onClick={handleCompleteClick} />
-            <p onClick={handleCompleteClick}>{tarefa.tarefa}</p>
+            <div>
+                <FontAwesomeIcon icon={faCircleCheck} onClick={handleCompleteClick} />
+            </div>
+
+            <div>
+                <p onClick={handleCompleteClick}>{tarefa.tarefa}</p>
+                            {tarefa.completed && tarefa.completedAt && (
+                <p>Completo em {new Date(tarefa.completedAt).toLocaleDateString()}</p>
+            )}
+            </div>
+
             <div>
                 <FontAwesomeIcon icon={faPenToSquare} onClick={handleEditClick} />
                 <FontAwesomeIcon icon={faTrash} onClick={handleDeleteClick} />
