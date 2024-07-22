@@ -77,13 +77,22 @@ export default function TodoWrapper() {
         });
     };
 
+    const cancelEdit = () => {
+        setTodos(prevTodos => prevTodos.map(todo => ({ ...todo, isEditing: false })));
+    };
+
     return (
         <div className='TodoWrapper'>
             <h1>Minhas tarefas</h1>
             <TodoForm addTodo={addTodo}></TodoForm>
             {todos.map((todo) => (
                 todo.isEditing ? (
-                    <EditTodoForm editarTarefa={editTarefa} tarefa={todo} key={todo.id}></EditTodoForm>
+                    <EditTodoForm
+                        key={todo.id}
+                        tarefa={todo}
+                        editarTarefa={editTarefa}
+                        onCancel={cancelEdit} // Passa a função cancelEdit para o EditTodoForm
+                    />
                 ) : (
                     <Todo
                         key={todo.id}
@@ -91,7 +100,7 @@ export default function TodoWrapper() {
                         tarefaCompleta={tarefaCompleta}
                         deletarTarefa={deletarTarefa}
                         editarTarefa={editarTarefa}
-                    ></Todo>
+                    />
                 )
             ))}
         </div>

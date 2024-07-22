@@ -35,7 +35,7 @@ body {
 h1 {
   color: var(--cor-de-texto);
   margin-bottom: 0.5rem;
-  font-size: 1.75rem;
+  font-size: 48px;
 }
 
 p {
@@ -47,6 +47,8 @@ p {
   margin-top: 5rem;
   padding: 2rem;
   border-radius: 5px;
+  width: 604px;
+ /*  height: 300px; */
 }
 
 .TodoForm {
@@ -71,6 +73,38 @@ p {
 
 .todo-btn {
   background: #5B9A8B;
+  color: #fff;
+  border: none;
+  padding: 0.55rem;
+  cursor: pointer;
+}
+
+.todo-filter {
+  background: #5B9A8B;
+  color: #fff;
+  border: none;
+  padding: 10px 14px 10px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo-filter:hover {
+  background: #bcf0e4;
+
+}
+
+.space {
+  margin-bottom: 1rem;
+  margin-left: 18px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.todo-btn-cancelar {
+  background: #c45959;
   color: #fff;
   border: none;
   padding: 0.55rem;

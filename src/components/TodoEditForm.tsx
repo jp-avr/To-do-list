@@ -7,9 +7,10 @@ interface EditTodoFormProps {
         tarefa: string;
         description: string;
     };
+    onCancel: () => void; // Adicionamos uma propriedade onCancel
 }
 
-export const EditTodoForm: React.FC<EditTodoFormProps> = ({ editarTarefa, tarefa }) => {
+export const EditTodoForm: React.FC<EditTodoFormProps> = ({ editarTarefa, tarefa, onCancel }) => {
     const [value, setValue] = useState(tarefa.tarefa);
     const [description, setDescription] = useState(tarefa.description);
 
@@ -22,22 +23,20 @@ export const EditTodoForm: React.FC<EditTodoFormProps> = ({ editarTarefa, tarefa
         setDescription("");
     };
 
+    const handleCancel = () => {
+        onCancel(); // Chama a função onCancel para fechar o formulário
+    };
+
     return (
         <form className="ToDoForm" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                className="todo-input"
-                value={value}
-                placeholder="Atualizar Tarefa"
-                onChange={(e) => setValue(e.target.value)}
-            />
-            {/* <textarea
-                className="todo-input"
-                value={description}
-                placeholder="Atualizar Descrição"
-                onChange={(e) => setDescription(e.target.value)}
-            /> */}
-            <button type="submit" className="todo-btn">Atualizar</button>
+            <div>
+                <input type="text" className="todo-input" value={value} placeholder="Atualizar Tarefa" onChange={(e) => setValue(e.target.value)}/>
+                <textarea className="todo-input" value={description} placeholder="Atualizar Descrição" onChange={(e) => setDescription(e.target.value)}/> 
+            </div>
+            <div className="botoes">
+                <button type="submit" className="todo-btn">Atualizar</button>
+                <button type="button" onClick={handleCancel} className="todo-btn-cancelar">Cancelar</button>
+            </div>
         </form>
     );
 };

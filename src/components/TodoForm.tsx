@@ -1,30 +1,49 @@
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons';
 
 interface TodoFormProps {
-    addTodo: (todo: string) => void;
+    addTodo: (todo: string, description: string) => void;
 }
 
 export const TodoForm: React.FC<TodoFormProps> = ({ addTodo }) => {
-    const [value, setValue] = useState("");
+    const [showForm, setShowForm] = useState(false);
+    const [task, setTask] = useState("");
+    const [description, setDescription] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        addTodo(value);
-
-        setValue("");
+        addTodo(task, description);
+        setTask("");
+        setDescription("");
+        setShowForm(false);
     };
 
+    if (!showForm) {
+        return (
+            <div>
+                <button onClick={() => setShowForm(true)} className='todo-filter space'><FontAwesomeIcon icon={faPlus} /></button>
+                
+                <button onClick={() => setShowForm(true)} className='todo-filter space'><FontAwesomeIcon icon={faFilter} /></button> 
+
+                <button onClick={() => setShowForm(true)} className='todo-filter space'><FontAwesomeIcon icon={faArrowDownShortWide} /></button> 
+            </div>
+        );
+    }
+
     return (
-        <form className="TodoForm" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                className="todo-input"
-                value={value}
-                placeholder="Qual a tarefa de hoje?"
-                onChange={(e) => setValue(e.target.value)}
-            />
-            <button type="submit" className="todo-btn">+</button>
+        <form onSubmit={handleSubmit} className='TodoForm'>
+            <div>
+                <input type="text" className='todo-input' value={task} placeholder="Qual a tarefa?" onChange={(e) => setTask(e.target.value)}/>
+            </div>
+            <div>
+                <textarea value={description} className='todo-input' placeholder="Descrição da tarefa" onChange={(e) => setDescription(e.target.value)}/>
+            </div>
+            <div className='botoes'>
+                <button type="submit" className='todo-btn'>Adicionar Tarefa</button>
+                <button onClick={() => setShowForm(false)} className='todo-btn-cancelar'>Cancelar</button>
+            </div>
         </form>
     );
 };
