@@ -38,6 +38,7 @@ export const Todo: React.FC<TodoProps> = ({ tarefa, tarefaCompleta, deletarTaref
 
             <div>
                 <p onClick={handleCompleteClick}>{tarefa.tarefa}</p>
+                <p> Descrição: {tarefa.description}</p>
                             {tarefa.completed && tarefa.completedAt && (
                 <p>Completo em {new Date(tarefa.completedAt).toLocaleDateString()}</p>
             )}
