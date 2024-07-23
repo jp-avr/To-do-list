@@ -11,6 +11,7 @@ interface Todo {
     completed: boolean;
     completedAt?: Date | null;
     isEditing: boolean;
+    createdAt: number;
 }
 
 export default function TodoWrapper() {
@@ -29,7 +30,7 @@ export default function TodoWrapper() {
     };
 
     const addTodo = (tarefa: string, description: string) => {
-        const newTodo: Todo = { id: uuidv4(), tarefa, description, completed: false, completedAt: null, isEditing: false };
+        const newTodo: Todo = { id: uuidv4(), tarefa, description, completed: false, completedAt: null, isEditing: false, createdAt: Date.now() };
         setTodos(prevTodos => {
             const updatedTodos = [...prevTodos, newTodo];
             salvar(updatedTodos);
@@ -60,7 +61,7 @@ export default function TodoWrapper() {
     const editarTarefa = (id: string) => {
         setTodos(prevTodos => {
             const updatedTodos = prevTodos.map(todo =>
-                todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+                todo.id === id ? { ...todo, isEditing: !todo.isEditing } : { ...todo, isEditing: false }
             );
             salvar(updatedTodos);
             return updatedTodos;
@@ -70,28 +71,41 @@ export default function TodoWrapper() {
     const editTarefa = (tarefa: string, description: string, id: string) => {
         setTodos(prevTodos => {
             const updatedTodos = prevTodos.map(todo =>
-                todo.id === id ? { ...todo, tarefa, description, isEditing: !todo.isEditing } : todo
+                todo.id === id ? { ...todo, tarefa, description, isEditing: false } : todo
             );
             salvar(updatedTodos);
             return updatedTodos;
         });
     };
 
-    const cancelEdit = () => {
-        setTodos(prevTodos => prevTodos.map(todo => ({ ...todo, isEditing: false })));
+    const orderByCreation = () => {
+        // Ordenar os todos por ordem de criação
+        const sortedTodos = [...todos].sort((a, b) => {
+            return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+        });
+        setTodos(sortedTodos);
+    };
+    
+
+    const orderAlphabetically = () => {
+        setTodos(prevTodos => [...prevTodos].sort((a, b) => a.tarefa.localeCompare(b.tarefa)));
     };
 
     return (
         <div className='TodoWrapper'>
             <h1>Minhas tarefas</h1>
-            <TodoForm addTodo={addTodo}></TodoForm>
+            <TodoForm 
+                addTodo={addTodo} 
+                orderByCreation={orderByCreation} 
+                orderAlphabetically={orderAlphabetically} 
+            />
             {todos.map((todo) => (
                 todo.isEditing ? (
                     <EditTodoForm
                         key={todo.id}
                         tarefa={todo}
                         editarTarefa={editTarefa}
-                        onCancel={cancelEdit} // Passa a função cancelEdit para o EditTodoForm
+                        onCancel={() => editarTarefa(todo.id)} // Define a função onCancel para fechar o formulário de edição
                     />
                 ) : (
                     <Todo

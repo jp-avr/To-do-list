@@ -5,9 +5,11 @@ import { faPlus, faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons'
 
 interface TodoFormProps {
     addTodo: (todo: string, description: string) => void;
+    orderByCreation: () => void;
+    orderAlphabetically: () => void;
 }
 
-export const TodoForm: React.FC<TodoFormProps> = ({ addTodo }) => {
+export const TodoForm: React.FC<TodoFormProps> = ({ addTodo, orderByCreation, orderAlphabetically }) => {
     const [showForm, setShowForm] = useState(false);
     const [task, setTask] = useState("");
     const [description, setDescription] = useState("");
@@ -20,14 +22,22 @@ export const TodoForm: React.FC<TodoFormProps> = ({ addTodo }) => {
         setShowForm(false);
     };
 
+    const handleOrderByCreation = () => {
+        orderByCreation();
+    };
+
+    const handleOrderAlphabetically = () => {
+        orderAlphabetically();
+    };
+
     if (!showForm) {
         return (
             <div>
                 <button onClick={() => setShowForm(true)} className='todo-filter space'><FontAwesomeIcon icon={faPlus} /></button>
                 
-                <button onClick={() => setShowForm(true)} className='todo-filter space'><FontAwesomeIcon icon={faFilter} /></button> 
+                <button onClick={handleOrderAlphabetically} className='todo-filter space'><FontAwesomeIcon icon={faFilter} /></button> 
 
-                <button onClick={() => setShowForm(true)} className='todo-filter space'><FontAwesomeIcon icon={faArrowDownShortWide} /></button> 
+                <button onClick={handleOrderByCreation} className='todo-filter space'><FontAwesomeIcon icon={faArrowDownShortWide} /></button> 
             </div>
         );
     }
