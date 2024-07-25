@@ -14,9 +14,10 @@ interface TodoProps {
     tarefaCompleta: (id: string) => void;
     deletarTarefa: (id: string) => void;
     editarTarefa: (id: string) => void;
+    corFundo: string; // Recebe a cor de fundo como propriedade
 }
 
-export const Todo: React.FC<TodoProps> = ({ tarefa, tarefaCompleta, deletarTarefa, editarTarefa }) => {
+export const Todo: React.FC<TodoProps> = ({ tarefa, tarefaCompleta, deletarTarefa, editarTarefa, corFundo }) => {
 
     const handleCompleteClick = () => {
         tarefaCompleta(tarefa.id);
@@ -31,7 +32,7 @@ export const Todo: React.FC<TodoProps> = ({ tarefa, tarefaCompleta, deletarTaref
     }
 
     return (
-        <div className={`Todo ${tarefa.completed ? 'completed' : ''}`}>
+        <div className={`Todo ${tarefa.completed ? 'completed' : ''}`} style={{ backgroundColor: corFundo }}>
             <div>
                 <FontAwesomeIcon icon={faCircleCheck} onClick={handleCompleteClick} />
             </div>
@@ -39,9 +40,9 @@ export const Todo: React.FC<TodoProps> = ({ tarefa, tarefaCompleta, deletarTaref
             <div>
                 <p onClick={handleCompleteClick}>{tarefa.tarefa}</p>
                 <p> Descrição: {tarefa.description}</p>
-                            {tarefa.completed && tarefa.completedAt && (
-                <p>Completo em {new Date(tarefa.completedAt).toLocaleDateString()}</p>
-            )}
+                {tarefa.completed && tarefa.completedAt && (
+                    <p>Completo em {new Date(tarefa.completedAt).toLocaleDateString()}</p>
+                )}
             </div>
 
             <div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TodoForm } from './TodoForm';
 import { v4 as uuidv4 } from 'uuid';
 import { Todo } from './Todo';
@@ -14,10 +14,14 @@ interface Todo {
     createdAt: number;
 }
 
-export default function TodoWrapper() {
+interface TodoWrapperProps {
+    corAtual: string;
+    setCorAtual: (color: string) => void;
+}
+
+const TodoWrapper: React.FC<TodoWrapperProps> = ({ corAtual }) => {
     const localStorageKey = 'todos';
     const [todos, setTodos] = useState<Todo[]>([]);
-    const [corAtual, setCorAtual] = useState<string>('');
 
     useEffect(() => {
         const storedTodos = JSON.parse(localStorage.getItem(localStorageKey) || '[]') as Todo[];
@@ -80,7 +84,6 @@ export default function TodoWrapper() {
     };
 
     const orderByCreation = () => {
-        // Ordenar os todos por ordem de criação
         const sortedTodos = [...todos].sort((a, b) => {
             return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
         });
@@ -88,30 +91,17 @@ export default function TodoWrapper() {
     };
 
     const orderAlphabetically = () => {
-        // ORDENA TODOS OS ELEMENTOS POR ORDEM ALFABETICA
         setTodos(prevTodos => [...prevTodos].sort((a, b) => a.tarefa.localeCompare(b.tarefa)));
     };
 
-    const handleColorChange = (color: string) => {
-        // Função para alterar a cor do projeto
-        setCorAtual(color);
-    };
-
     return (
-        <div className='TodoWrapper' style={{backgroundColor: corAtual}}>
-            <div className="color-picker">
-                <span onClick={() => handleColorChange('#ADBDDC')} style={{ backgroundColor: '#ADBDDC' }}>a</span>
-                <span onClick={() => handleColorChange('#FE9595')} style={{ backgroundColor: '#FE9595' }}>b</span>
-                <span onClick={() => handleColorChange('#C7ADDC')} style={{ backgroundColor: '#C7ADDC' }}>c</span>
-                <span onClick={() => handleColorChange('#FCB890')} style={{ backgroundColor: '#FCB890' }}>d</span>
-                <span onClick={() => handleColorChange('#FFE3A7')} style={{ backgroundColor: '#FFE3A7' }}>e</span>
-            </div>
-
+        <div className='TodoWrapper'>
             <h1>Minhas tarefas</h1>
             <TodoForm 
                 addTodo={addTodo} 
                 orderByCreation={orderByCreation} 
                 orderAlphabetically={orderAlphabetically} 
+                corAtual={corAtual}
             />
             {todos.map((todo) => (
                 todo.isEditing ? (
@@ -119,7 +109,7 @@ export default function TodoWrapper() {
                         key={todo.id}
                         tarefa={todo}
                         editarTarefa={editTarefa}
-                        onCancel={() => editarTarefa(todo.id)} // Define a função onCancel para fechar o formulário de edição
+                        onCancel={() => editarTarefa(todo.id)}
                     />
                 ) : (
                     <Todo
@@ -128,9 +118,12 @@ export default function TodoWrapper() {
                         tarefaCompleta={tarefaCompleta}
                         deletarTarefa={deletarTarefa}
                         editarTarefa={editarTarefa}
+                        corFundo={corAtual} // Passa a cor atual como propriedade para Todo
                     />
                 )
             ))}
         </div>
     );
-}
+};
+
+export default TodoWrapper;

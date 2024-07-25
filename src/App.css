@@ -24,12 +24,15 @@ body {
 
 .imagem_note {
   padding-top: 5%;
-  width: 30%;
-  height: 30%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .App {
   text-align: center;
+  display: flex;
 }
 
 .retangulo-azul{
@@ -75,9 +78,13 @@ body {
 .cores {
   display: flex;
   justify-content: space-between;
+  gap: 25px;
   padding: 28px;
   background: #FFFFFF80;
   border-radius: 20px;
+  max-height: 78px;
+  margin-top: 5rem;
+  margin-right: 36px;
 }
 
 h1 {
@@ -129,7 +136,7 @@ p {
 
 .todo-filter {
   background: #5B9A8B;
-  color: #fff;
+  color: #000000;
   border: none;
   padding: 10px 14px 10px 14px;
   border-radius: 5px;
@@ -185,7 +192,7 @@ p {
 }
 
 .Todo.completed {
-  background-color: var(--tarefa-completa);
+  background-color: var(--tarefa-completa) !important;
   cursor: pointer;
 }
 
