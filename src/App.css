@@ -32,6 +32,54 @@ body {
   text-align: center;
 }
 
+.retangulo-azul{
+  background: #ADBDDC;
+  width: 78px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.retangulo-rosa{
+  background: #FE9595;
+  width: 78px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.retangulo-roxo{
+  background: #C7ADDC;
+  width: 78px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.retangulo-laranja{
+  background: #FCB890;
+  width: 78px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.retangulo-amarelo{
+  background: #FFE3A7;
+  width: 78px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.cores {
+  display: flex;
+  justify-content: space-between;
+  padding: 28px;
+  background: #FFFFFF80;
+  border-radius: 20px;
+}
+
 h1 {
   color: var(--cor-de-texto);
   margin-bottom: 0.5rem;

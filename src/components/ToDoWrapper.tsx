@@ -17,6 +17,7 @@ interface Todo {
 export default function TodoWrapper() {
     const localStorageKey = 'todos';
     const [todos, setTodos] = useState<Todo[]>([]);
+    const [corAtual, setCorAtual] = useState<string>('');
 
     useEffect(() => {
         const storedTodos = JSON.parse(localStorage.getItem(localStorageKey) || '[]') as Todo[];
@@ -85,14 +86,27 @@ export default function TodoWrapper() {
         });
         setTodos(sortedTodos);
     };
-    
 
     const orderAlphabetically = () => {
+        // ORDENA TODOS OS ELEMENTOS POR ORDEM ALFABETICA
         setTodos(prevTodos => [...prevTodos].sort((a, b) => a.tarefa.localeCompare(b.tarefa)));
     };
 
+    const handleColorChange = (color: string) => {
+        // Função para alterar a cor do projeto
+        setCorAtual(color);
+    };
+
     return (
-        <div className='TodoWrapper'>
+        <div className='TodoWrapper' style={{backgroundColor: corAtual}}>
+            <div className="color-picker">
+                <span onClick={() => handleColorChange('#ADBDDC')} style={{ backgroundColor: '#ADBDDC' }}>a</span>
+                <span onClick={() => handleColorChange('#FE9595')} style={{ backgroundColor: '#FE9595' }}>b</span>
+                <span onClick={() => handleColorChange('#C7ADDC')} style={{ backgroundColor: '#C7ADDC' }}>c</span>
+                <span onClick={() => handleColorChange('#FCB890')} style={{ backgroundColor: '#FCB890' }}>d</span>
+                <span onClick={() => handleColorChange('#FFE3A7')} style={{ backgroundColor: '#FFE3A7' }}>e</span>
+            </div>
+
             <h1>Minhas tarefas</h1>
             <TodoForm 
                 addTodo={addTodo} 
