@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --cor-de-fundo: #F5DEB2;
+  --cor-de-fundo: #FCB890;
   --cor-de-input: #fff;
   --cor-de-texto: #000;
   --cor-de-placeholder: rgba(0, 0, 0, 0.5);
@@ -23,11 +23,11 @@ body {
 }
 
 .imagem_note {
-  padding-top: 5%;
-  width: 100%;
-  height: 100%;
+  padding: 5%;
+  width: 90%;
+  height: 90%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
 .App {
@@ -35,7 +35,7 @@ body {
   display: flex;
 }
 
-.retangulo-azul{
+.retangulo-azul {
   background: #ADBDDC;
   width: 78px;
   height: 22px;
@@ -43,7 +43,7 @@ body {
   border-radius: 5px;
 }
 
-.retangulo-rosa{
+.retangulo-rosa {
   background: #FE9595;
   width: 78px;
   height: 22px;
@@ -51,7 +51,7 @@ body {
   border-radius: 5px;
 }
 
-.retangulo-roxo{
+.retangulo-roxo {
   background: #C7ADDC;
   width: 78px;
   height: 22px;
@@ -59,7 +59,7 @@ body {
   border-radius: 5px;
 }
 
-.retangulo-laranja{
+.retangulo-laranja {
   background: #FCB890;
   width: 78px;
   height: 22px;
@@ -67,7 +67,7 @@ body {
   border-radius: 5px;
 }
 
-.retangulo-amarelo{
+.retangulo-amarelo {
   background: #FFE3A7;
   width: 78px;
   height: 22px;
@@ -84,17 +84,22 @@ body {
   border-radius: 20px;
   max-height: 78px;
   margin-top: 5rem;
-  margin-right: 36px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  align-items: center;
 }
 
 h1 {
   color: var(--cor-de-texto);
-  margin-bottom: 0.5rem;
-  font-size: 48px;
+  margin-bottom: 1rem;
+  font-size: 40px;
 }
 
 p {
   font-size: 0.9rem;
+  padding-left: 0;
+  max-width: 400px;
+  text-align: left;
 }
 
 .TodoWrapper {
@@ -103,12 +108,12 @@ p {
   padding: 2rem;
   border-radius: 5px;
   width: 604px;
- /*  height: 300px; */
+  /*  height: 300px; */
 }
 
 .TodoForm {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .todo-input {
@@ -116,8 +121,8 @@ p {
   background: none;
   border: 1px solid #5B9A8B;
   padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 0.9rem;
+  margin-bottom: 1rem;
   width: 300px;
   color: var(--cor-de-texto);
 }
@@ -135,7 +140,7 @@ p {
 }
 
 .todo-filter {
-  background: #5B9A8B;
+  background: var(--cor-de-fundo);
   color: #000000;
   border: none;
   padding: 10px 14px 10px 14px;
@@ -144,8 +149,7 @@ p {
 }
 
 .todo-filter:hover {
-  background: #bcf0e4;
-
+  background: #FFE3A7;
 }
 
 .space {
@@ -174,12 +178,12 @@ p {
   color: var(--cor-de-texto);
   padding: 0.75rem 1rem;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   cursor: pointer;
 }
 
-.Todo:hover{
-  background-color: #f0c474;
+.Todo:hover {
+  background-color: #FFE3A7;
 }
 
 .fa-trash {
@@ -209,30 +213,103 @@ p {
 @media (max-width: 480px) {
 
   body {
+    display: flex;
     flex-direction: column;
-    padding: 2%;
+    padding: 10%;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
-  h1 {
-    font-size: 1.40rem;
+  .imagem_cor {
+    display: flex;
+    flex-direction: column-reverse;
   }
 
-  p {
-    font-size: 0.70rem;
+  .cores {
+    display: flex;
+    gap: 5px;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 10px 0px 10px 0px;
+    width: 300px;
+    height: 43px;
+  }
+
+  .retangulo-azul {
+    width: 40px;
+    height: 13px;
+  }
+
+  .retangulo-rosa {
+    width: 40px;
+    height: 13px;
+  }
+
+  .retangulo-roxo {
+    width: 40px;
+    height: 13px;
+  }
+
+  .retangulo-laranja {
+    width: 40px;
+    height: 13px;
+  }
+
+  .retangulo-amarelo {
+    width: 40px;
+    height: 13px;
+  }
+
+  .imagem_note {
+    width: 150px;
+    height: 150px;
+    padding: 0%;
+    display: inline-block;
+    margin-bottom: 10px;
   }
 
   .TodoWrapper {
-    margin-top: 2rem;
+    border-radius: 5px;
+    width: 110%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 25px;
+    padding: 2rem 0.9rem;
   }
 
-  .todo-input {
-    width: 200px;
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 30px;
   }
 
-  .todo-btn {
-    padding: 0.56rem;
+  p {
+    font-size: 0.6rem;
+    text-align: left;
+    padding-left: 2px;
+    max-width: 190px;
   }
+
+  .todo-filter {
+    padding: 10px 14px 10px 14px;
+  }
+
+  .Todo {
+    padding: 1rem 1rem;
+    margin-bottom: 0rem;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    display: flex;
+    flex-direction: row;
+  }
+
 }
 
 /* RESPONSIVIDADE TABLET */
