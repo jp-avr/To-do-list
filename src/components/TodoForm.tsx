@@ -50,7 +50,7 @@ export const TodoForm: React.FC<TodoFormProps> = ({ addTodo, orderByCreation, or
                 <textarea value={description} className='todo-input' placeholder="Descrição da tarefa" onChange={(e) => setDescription(e.target.value)} />
             </div>
             <div className='botoes'>
-                <button type="submit" className='todo-btn'>Adicionar Tarefa</button>
+                <button type="submit" className='todo-btn'>Adicionar tarefa</button>
                 <button onClick={() => setShowForm(false)} className='todo-btn-cancelar'>Cancelar</button>
             </div>
         </form>
