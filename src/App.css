@@ -396,6 +396,7 @@ p {
 
   .todo-filter {
     margin: 5px 10px;
+    padding: 5px 10px;
   }
 
   .Todo {
@@ -405,7 +406,7 @@ p {
   }
 
   .botoes {
-    margin: 10px 4px;
+    margin: 10px 0.5px;
     justify-content: space-around;
   }
 
@@ -433,12 +434,13 @@ p {
 
 /* RESPONSIVIDADE TABLET */
 
-@media (min-width: 768px) and (max-width:1024px) {
+@media (min-width: 720px) and (max-width:1024px) {
 
   body {
     display: flex;
     flex-direction: column;
     padding: 10%;
+    align-items: center;
   }
 
   .App {
@@ -451,5 +453,18 @@ p {
   .imagem_cor {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .imagem_note {
+    margin: 1rem 2rem;
+  }
+
+  .cores {
+    margin: 0rem;
+  }
+
+  .todo-filter {
+    padding: 10px 25px;
+    align-items: center;
   }
 }
