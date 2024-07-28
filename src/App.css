@@ -47,6 +47,10 @@ body {
 
 .retangulo-azul:hover {
   background: rgb(146, 117, 250);
+  border: 2px solid;
+  padding: 11px 0px;
+  border-inline-start-style: solid;
+  cursor: pointer;
 }
 
 .retangulo-rosa {
@@ -59,6 +63,10 @@ body {
 
 .retangulo-rosa:hover {
   background: #f77070;
+  border: 2px solid;
+  padding: 11px 0px;
+  border-inline-start-style: solid;
+  cursor: pointer;
 }
 
 .retangulo-roxo {
@@ -71,6 +79,10 @@ body {
 
 .retangulo-roxo:hover {
   background: #a467d6;
+  border: 2px solid;
+  padding: 11px 0px;
+  border-inline-start-style: solid;
+  cursor: pointer;
 }
 
 .retangulo-laranja {
@@ -83,6 +95,10 @@ body {
 
 .retangulo-laranja:hover {
   background: #fa9358;
+  border: 2px solid;
+  padding: 11px 0px;
+  border-inline-start-style: solid;
+  cursor: pointer;
 }
 
 .retangulo-amarelo {
@@ -95,6 +111,10 @@ body {
 
 .retangulo-amarelo:hover {
   background: #f8c860;
+  border: 2px solid;
+  padding: 11px 0px;
+  border-inline-start-style: solid;
+  cursor: pointer;
 }
 
 .cores {
@@ -152,6 +172,10 @@ p {
   color: var(--cor-de-texto);
 }
 
+.todo-input:hover {
+  background: #dcf1ed;
+}
+
 .todo-input::placeholder {
   color: var(--cor-de-placeholder);
 }
@@ -163,6 +187,10 @@ p {
   border-radius: 5px;
   padding: 0.55rem;
   cursor: pointer;
+}
+
+.todo-btn:hover {
+  background: #29836e;
 }
 
 .todo-filter {
@@ -185,14 +213,14 @@ p {
 
 .botoes {
   display: flex;
-  margin: 10px 30px;
+  margin: 10px 26px;
   justify-content: space-evenly;
 }
 
 .botoes-editar {
   display: flex;
-  margin: 0px 20px;
-  justify-content: space-evenly;
+  margin: 0px 120px;
+  justify-content: space-between;
 }
 
 .todo-btn-cancelar {
@@ -202,6 +230,10 @@ p {
   border-radius: 5px;
   padding: 0.55rem;
   cursor: pointer;
+}
+
+.todo-btn-cancelar:hover {
+  background: #a12020;
 }
 
 .Todo {
@@ -280,10 +312,20 @@ p {
     border: 0.5px solid;
   }
 
+  .retangulo-azul:hover {
+    border: 1px solid;
+    padding: 8.5px 0px;
+  }
+
   .retangulo-rosa {
     width: 40px;
     height: 13px;
     border: 0.5px solid;
+  }
+
+  .retangulo-rosa:hover {
+    border: 1px solid;
+    padding: 8.5px 0px;
   }
 
   .retangulo-roxo {
@@ -292,16 +334,31 @@ p {
     border: 0.5px solid;
   }
 
+  .retangulo-roxo:hover {
+    border: 1px solid;
+    padding: 8.5px 0px;
+  }
+
   .retangulo-laranja {
     width: 40px;
     height: 13px;
     border: 0.5px solid;
   }
 
+  .retangulo-laranja:hover {
+    border: 1px solid;
+    padding: 8.5px 0px;
+  }
+
   .retangulo-amarelo {
     width: 40px;
     height: 13px;
     border: 0.5px solid;
+  }
+
+  .retangulo-amarelo:hover {
+    border: 1px solid;
+    padding: 8.5px 0px;
   }
 
   .imagem_note {
@@ -368,8 +425,31 @@ p {
     flex-direction: row;
   }
 
+  .botoes-editar {
+    margin: 0px 22px;
+  }
+
 }
 
 /* RESPONSIVIDADE TABLET */
 
-@media (min-width: 768px) and (max-width:820px) {}
+@media (min-width: 768px) and (max-width:1024px) {
+
+  body {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imagem_cor {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
