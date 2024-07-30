@@ -5,6 +5,7 @@
   --cor-de-input: #fff;
   --cor-de-texto: #000;
   --cor-de-placeholder: rgba(0, 0, 0, 0.5);
+  --cor-de-botao-ok: #5B9A8B;
   --tarefa-completa: rgba(144, 201, 109, 0.67);
 }
 
@@ -164,7 +165,7 @@ p {
 .todo-input {
   outline: none;
   background: none;
-  border: 1px solid #5B9A8B;
+  border: 1px solid var(--cor-de-botao-ok);
   padding: 0.5rem 1rem;
   margin-top: 0.9rem;
   margin-bottom: 1rem;
@@ -173,6 +174,10 @@ p {
 }
 
 .todo-input:hover {
+  background: #f6fdfc;
+}
+
+.todo-input:focus {
   background: #dcf1ed;
 }
 
@@ -181,7 +186,7 @@ p {
 }
 
 .todo-btn {
-  background: #5B9A8B;
+  background: var(--cor-de-botao-ok);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -200,10 +205,6 @@ p {
   padding: 10px 14px 10px 14px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.todo-filter:hover {
-  background: #FFE3A7;
 }
 
 .space {
@@ -248,10 +249,6 @@ p {
   cursor: pointer;
 }
 
-.Todo:hover {
-  background-color: #FFE3A7;
-}
-
 .fa-trash {
   margin-left: 0.75rem;
 }
@@ -267,7 +264,7 @@ p {
 }
 
 .Todo.completed:hover {
-  background-color: #5B9A8B;
+  background-color: var(--cor-de-botao-ok);
 }
 
 .edit-icon,
@@ -461,6 +458,26 @@ p {
 
   .cores {
     margin: 0rem;
+  }
+
+  .retangulo-azul:hover {
+    padding: 14px 0px;
+  }
+
+  .retangulo-rosa:hover {
+    padding: 14px 0px;
+  }
+
+  .retangulo-roxo:hover {
+    padding: 14px 0px;
+  }
+
+  .retangulo-laranja:hover {
+    padding: 14px 0px;
+  }
+
+  .retangulo-amarelo:hover {
+    padding: 14px 0px;
   }
 
   .todo-filter {
