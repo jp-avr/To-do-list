@@ -1,17 +1,22 @@
 import './App.css';
 import TodoWrapper from './components/ToDoWrapper';
 import { useState, useEffect } from 'react';
+import tempoAzul from './assets/tempo-azul.svg';
+import alvoVermelho from './assets/alvo-vermelho.svg';
+import tarefasRoxo from './assets/tarefas-roxo.svg';
+import ideiaLaranja from './assets/ideia-laranja.svg';
+import mensagemAmarelo from './assets/mensagem-amarelo.svg';
 
 function App() {
     const [corAtual, setCorAtual] = useState<string>('');
 
     //ASSOCIANDO AS CORES COM AS RESPECTIVAS IMAGENS
     const imagensPorCor: Record<string, string> = {
-        '#ADBDDC': 'src/assets/tempo-azul.svg',
-        '#FE9595': 'src/assets/alvo-vermelho.svg',
-        '#C7ADDC': 'src/assets/tarefas-roxo.svg',
-        '#FCB890': 'src/assets/ideia-laranja.svg',
-        '#FFE3A7': 'src/assets/mensagem-amarelo.svg',
+        '#ADBDDC': tempoAzul,
+        '#FE9595': alvoVermelho,
+        '#C7ADDC': tarefasRoxo,
+        '#FCB890': ideiaLaranja,
+        '#FFE3A7': mensagemAmarelo,
     };
 
     const imagemAtual = imagensPorCor[corAtual] || 'src/assets/ideia-laranja.svg'; // ideia-laranja.svg é usada como imagem padrão
