@@ -19,7 +19,7 @@ function App() {
         '#FFE3A7': mensagemAmarelo,
     };
 
-    const imagemAtual = imagensPorCor[corAtual] || 'src/assets/ideia-laranja.svg'; // ideia-laranja.svg é usada como imagem padrão
+    const imagemAtual = imagensPorCor[corAtual] || ideiaLaranja; // ideia-laranja.svg é usada como imagem padrão
 
     useEffect(() => {
         // Atualiza o estilo do body ao mudar a cor atual
